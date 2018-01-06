@@ -89,12 +89,19 @@ public class Link
                                     CdShopConfiguration.PaypalReturnUrl, CdShopConfiguration.PaypalCancelUrl);
         return HttpUtility.UrlPathEncode(path);
     }
-    public static string ToPayPalAddItem(string productUrl, string productName
-, decimal productPrice, string productOptions)
+
+    public static string ToPayPalAddItem(string productUrl, string productName, decimal productPrice, string productOptions)
     {
         string path = String.Format("{0}&business={1}&return={2}&cancel_return={3}&shopping_url={4}&item_name={5}&amount={6:0.00}&currency={7}&on0=Options&os0={8}&add=1",
                                     CdShopConfiguration.PaypalUrl, CdShopConfiguration.PaypalEmail, CdShopConfiguration.PaypalReturnUrl, CdShopConfiguration.PaypalCancelUrl,
                                     productUrl, productName, productPrice, CdShopConfiguration.PaypalCurrency, productOptions);
         return HttpUtility.UrlPathEncode(path);
+    }
+
+    public static string ToPayPalCheckout(string orderName, decimal orderAmount)
+    {
+        return HttpUtility.UrlPathEncode(String.Format("{0}/business={1}&item_name={2}&amount={3:0.00}&currency={4}&return={5}&cancel_return={6}",
+            CdShopConfiguration.PaypalUrl, CdShopConfiguration.PaypalEmail, orderName, orderAmount,
+            CdShopConfiguration.PaypalCurrency, CdShopConfiguration.PaypalReturnUrl, CdShopConfiguration.PaypalCancelUrl));
     }
 }

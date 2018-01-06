@@ -27,9 +27,8 @@
             </asp:TemplateField>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:HyperLink runat="server" ID="link" NavigateUrl='<%# "AdminProducts.aspx?DepartmentID=" + Request.QueryString["DepartmentID"] + "&amp;CategoryID=" + Eval("Id") %>'
-                        Text="View Products">
-                    </asp:HyperLink>
+                    <asp:HyperLink runat="server" Text="View Products" ID="link" NavigateUrl='<%# "AdminProducts.aspx?DepartmentID=" + 
+                            Request.QueryString["DepartmentID"] + "&amp;CategoryID=" + Eval("Id") %>' />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:CommandField ShowEditButton="True" />

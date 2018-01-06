@@ -214,3 +214,32 @@ a.CategorySelected {
     color: Navy;
     background-color: #F7F7F7;
 }
+
+.WideLabel {
+    display: -moz-inline-block;
+    display: inline-block;
+    width: 100px;
+}
+
+.CartSummary {
+    border: #0468a4 2px solid;
+    background-color: snow;
+    padding: 3px 2px 5px;
+}
+
+.RecommendationsHead {
+    font-weight: bold;
+}
+
+.RecommendationLabel {
+    display: -moz-inline-block;
+    display: inline-block;
+    width: 200px;
+}
+
+.UserDetailsTable {
+    width: 100%;
+    background-color: #ccccff;
+    border: Solid 1px Navy;
+    line-height: 20px;
+}

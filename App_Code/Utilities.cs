@@ -14,19 +14,22 @@ public static class Utilities
         //
     }
 
-    // Generic method for sending emails
     public static void SendMail(string from, string to, string subject, string body)
     {
-        // Configure mail client
-        SmtpClient mailClient = new SmtpClient(CdShopConfiguration.MailServer);
-        // Set credentials (for SMTP servers that require authentication)
-        mailClient.Credentials = new NetworkCredential(CdShopConfiguration.MailUsername, CdShopConfiguration.MailPassword);
-        // Create the mail message
-        MailMessage mailMessage = new MailMessage(from, to, subject, body);
-        // Send mail
-        mailClient.Send(mailMessage);
+        SmtpClient smtpClient = new SmtpClient(CdShopConfiguration.MailServer, 587);
+        using (smtpClient)
+        {
+            smtpClient.EnableSsl = true;
+            smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtpClient.UseDefaultCredentials = false;
+            smtpClient.Credentials = new NetworkCredential(CdShopConfiguration.MailUsername, CdShopConfiguration.MailPassword);
+
+            MailMessage mailMessage = new MailMessage(from, to, subject, body);
+
+            smtpClient.Send(mailMessage);
+        }
     }
-    
+
     // Send error log mail
     public static void LogError(Exception ex)
     {

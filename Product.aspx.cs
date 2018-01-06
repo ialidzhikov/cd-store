@@ -26,6 +26,10 @@ public partial class Product : Page
     // Fill the control with data
     private void PopulateControls(ECommerce.CdShop.Entity.Product pd)
     {
+        // Display product recommendations
+        string productId = pd.Id.ToString();
+        recommendations.LoadProductRecommendations(productId);
+
         // Display product details
         titleLabel.Text = pd.Name;
         descriptionLabel.Text = pd.Description;
@@ -68,8 +72,6 @@ public partial class Product : Page
     {
         // Retrieve ProductID from the query string
         string productId = Request.QueryString["ProductID"];
-        // Retrieves product details
-        ECommerce.CdShop.Entity.Product pd = CatalogAccess.GetProductDetails(productId);
         // Retrieve the selected product options
         string options = "";
         foreach (Control cnt in attrPlaceHolder.Controls)
@@ -85,9 +87,7 @@ public partial class Product : Page
                 options += attrDropDown.Items[attrDropDown.SelectedIndex] + "; ";
             }
         }
-        // The Add to Cart link
-        string productUrl = Link.ToProduct(pd.Id.ToString());
-        string destination = Link.ToPayPalAddItem(productUrl, pd.Name, pd.Price, options);
-        Response.Redirect(destination);
+        // Add the product to the shopping cart
+        ShoppingCartDao.AddItem(productId, options);
     }
 }

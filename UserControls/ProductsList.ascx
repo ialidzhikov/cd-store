@@ -16,7 +16,7 @@
         </a>
         <%# HttpUtility.HtmlEncode(Eval("Description").ToString()) %>
         <p  class="DetailSection">
-            Price:
+            Цена:
             <%# Eval("Price", "{0:c}") %>
         </p>
         <asp:PlaceHolder ID="attrPlaceHolder" runat="server"></asp:PlaceHolder>

@@ -9,6 +9,8 @@
 
 <%@ Register src="UserControls/UserInfo.ascx" tagname="UserInfo" tagprefix="uc5" %>
 
+<%@ Register src="UserControls/CartSummary.ascx" tagname="CartSummary" tagprefix="uc6" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -28,13 +30,14 @@
               <uc1:DepartmentsList ID="DepartmentsList1" runat="server" />
               <uc2:CategoriesList ID="CategoriesList1" runat="server" />
               <p>
+                  <uc6:CartSummary ID="CartSummary1" runat="server" />
                 <asp:HyperLink ID="PayPalViewCart" runat="server" NavigateUrl=<%# Link.ToPayPalViewCart() %>>Your Shopping Cart</asp:HyperLink>
               </p>
           </div>
         </div>
         <div class="Right">
           <div class="Header">
-            <asp:HyperLink ID="HeaderLink" ImageUrl="~/Images/CdShopLogo.png" 
+            <asp:HyperLink ID="HeaderLink" ImageUrl="~/Images/logo.jpg" 
                            NavigateUrl="~/" runat="server" ToolTip="CD Shop Logo" />
           </div>
           <div class="Contents">

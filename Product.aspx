@@ -2,6 +2,8 @@
     AutoEventWireup="true" CodeFile="Product.aspx.cs" Inherits="Product"
     Title="BalloonShop: Product Details Page" %>
 
+<%@ Register src="UserControls/ProductRecommendations.ascx" tagname="ProductRecommendations" tagprefix="uc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2"
@@ -28,4 +30,5 @@
         <asp:LinkButton ID="AddToCartButton" runat="server"
             OnClick="AddToCartButton_Click">Add to Shopping Cart</asp:LinkButton>
     </p>
+    <uc1:ProductRecommendations ID="recommendations" runat="server" />
 </asp:Content>

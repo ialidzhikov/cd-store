@@ -155,4 +155,41 @@ public static class CdShopConfiguration
             return ConfigurationManager.AppSettings["PaypalCancelUrl"];
         }
     }
+   
+    public static int CartPersistDays
+    {
+        get
+        {
+            return int.Parse(ConfigurationManager.AppSettings["CartPersistDays"]);
+        }
+    }
+
+    // Returns the email address for customers to contact the site
+    public static string CustomerServiceEmail
+    {
+        get
+        {
+            return
+            ConfigurationManager.AppSettings["CustomerServiceEmail"];
+        }
+    }
+
+    // The "from" address for auto-generated order processor emails
+    public static string OrderProcessorEmail
+    {
+        get
+        {
+            return
+            ConfigurationManager.AppSettings["OrderProcessorEmail"];
+        }
+    }
+
+    // The email address to use to contact the supplier
+    public static string SupplierEmail
+    {
+        get
+        {
+            return ConfigurationManager.AppSettings["SupplierEmail"];
+        }
+    }
 }

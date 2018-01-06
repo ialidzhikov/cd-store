@@ -2,7 +2,7 @@
 <asp:DataList ID="list" runat="server" Width="200px" CssClass="CategoriesList">
     <HeaderStyle CssClass="CategoriesListHead" />
     <HeaderTemplate>
-        Choose a category
+        Категории
     </HeaderTemplate>
     <ItemTemplate>
         <asp:HyperLink ID="HyperLink1" runat="server"
