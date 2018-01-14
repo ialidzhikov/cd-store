@@ -30,7 +30,7 @@ public class Link
         }
         else
         {
-            return BuildAbsolute(String.Format("Catalog.aspx?DepartmentID={0}&Page ={1}", departmentId, page));
+            return BuildAbsolute(String.Format("Catalog.aspx?DepartmentID={0}&Page={1}", departmentId, page));
         }
     }
 

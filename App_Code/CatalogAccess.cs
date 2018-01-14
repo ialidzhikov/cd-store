@@ -262,8 +262,7 @@ public static class CatalogAccess
     }
 
     // Search the product catalog
-    public static DataTable Search(string searchString, string allWords,
-    string pageNumber, out int howManyPages)
+    public static DataTable Search(string searchString, string allWords, string pageNumber, out int howManyPages)
     {
         // get a configured DbCommand object
         DbCommand comm = GenericDataAccess.CreateCommand();
@@ -302,7 +301,7 @@ public static class CatalogAccess
         // define the maximum number of words
         int howManyWords = 5;
         // transform search string into array of words
-        string[] words = Regex.Split(searchString, "[^a-zA-Z0-9]+");
+        string[] words = Regex.Split(searchString, "[^a-zA-Z0-9а-яА-Я]+");
         // add the words as stored procedure parameters
         int index = 1;
         for (int i = 0; i <= words.GetUpperBound(0) && index <= howManyWords; i++)

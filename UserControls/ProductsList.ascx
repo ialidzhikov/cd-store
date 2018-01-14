@@ -9,11 +9,11 @@
 <asp:DataList ID="list" runat="server" RepeatColumns="2" CssClass="ProductList" EnableViewState="False" OnItemDataBound="list_ItemDataBound">
     <ItemTemplate>
         <h3 class="ProductTitle">
-            <a href="<%# Link.ToProduct(Eval("ProductID").ToString()) %>">
+            <a href="<%# Link.ToProduct(Eval("Id").ToString()) %>">
                 <%# HttpUtility.HtmlEncode(Eval("Name").ToString()) %>
             </a>
         </h3>
-        <a href="<%# Link.ToProduct(Eval("ProductID").ToString()) %>">
+        <a href="<%# Link.ToProduct(Eval("Id").ToString()) %>">
             <img width="100" border="0"
                 src="<%# Link.ToProductImage(Eval("Thumbnail").ToString()) %>"
                 alt='<%# HttpUtility.HtmlEncode(Eval("Name").ToString())%>' />

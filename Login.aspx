@@ -15,7 +15,7 @@
         <div class="container">
             <div class="navbar-header">
                 <a href="/" class="navbar-brand">
-                    <img src="/images/logo-header.jpg">
+                    <img src="/images/logo-header.jpg" />
                     CdShop
                 </a>
                 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">

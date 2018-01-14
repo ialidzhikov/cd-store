@@ -32,8 +32,7 @@ public partial class UserControls_ProductsList : UserControl
             // Retrieve AllWords from query string
             string allWords = Request.QueryString["AllWords"];
             // Perform search
-            list.DataSource = CatalogAccess.Search(searchString, allWords,
-           page, out howManyPages);
+            list.DataSource = CatalogAccess.Search(searchString, allWords, page, out howManyPages);
             list.DataBind();
             // Display pager
             firstPageUrl = Link.ToSearch(searchString, allWords.ToUpper() == "TRUE", "1");
@@ -79,7 +78,7 @@ public partial class UserControls_ProductsList : UserControl
     {
         // obtain the attributes of the product
         DataRowView dataRow = (DataRowView)e.Item.DataItem;
-        string productId = dataRow["ProductID"].ToString();
+        string productId = dataRow["Id"].ToString();
         DataTable attrTable = CatalogAccess.GetProductAttributes(productId);
         // get the attribute placeholder
         PlaceHolder attrPlaceHolder = (PlaceHolder)e.Item.FindControl("attrPlaceHolder");

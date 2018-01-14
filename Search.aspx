@@ -9,6 +9,4 @@
     </asp:Label>
     <br />
     <asp:Label CssClass="CatalogDescription" ID="descriptionLabel" runat="server"></asp:Label>
-    <br />
-    <uc1:ProductsList ID="ProductsList1" runat="server" />
 </asp:Content>

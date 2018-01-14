@@ -13,7 +13,7 @@
             Text="Label"></asp:Label>
     </p>
     <p>
-        <asp:Image ID="productImage" runat="server" />
+        <asp:Image ID="productImage" runat="server" ControlStyle-Width="300px" />
     </p>
     <p>
         <asp:Label ID="descriptionLabel" runat="server" Text="Label"></asp:Label>
