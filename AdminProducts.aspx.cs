@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class AdminProducts : System.Web.UI.Page
+public partial class AdminProducts : Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -46,18 +46,18 @@ public partial class AdminProducts : System.Web.UI.Page
         // Set the row for which to enable edit mode
         grid.EditIndex = e.NewEditIndex;
         // Set status message
-        statusLabel.Text = "Editing row # " + e.NewEditIndex.ToString();
+        statusLabel.Text = "Редактиране на ред # " + e.NewEditIndex.ToString();
         // Reload the grid
         BindGrid();
     }
-    // Cancel edit mode
+
     protected void grid_RowCancelingEdit(object sender,
     GridViewCancelEditEventArgs e)
     {
         // Cancel edit mode
         grid.EditIndex = -1;
         // Set status message
-        statusLabel.Text = "Editing canceled";
+        statusLabel.Text = "Отказано редактиране";
         // Reload the grid
         BindGrid();
     }
@@ -65,7 +65,6 @@ public partial class AdminProducts : System.Web.UI.Page
     // Update a product
     protected void grid_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
-        // Retrieve updated data
         try
         {
             string id = grid.DataKeys[e.RowIndex].Value.ToString();
@@ -76,17 +75,17 @@ public partial class AdminProducts : System.Web.UI.Page
             string image = ((TextBox)grid.Rows[e.RowIndex].FindControl("imageTextBox")).Text;
             string promoDept = ((CheckBox)grid.Rows[e.RowIndex].Cells[6].Controls[0]).Checked.ToString();
             string promoFront = ((CheckBox)grid.Rows[e.RowIndex].Cells[7].Controls[0]).Checked.ToString();
-            // Execute the update command
+
             bool success = CatalogAccess.UpdateProduct(id, name, description, price, thumbnail, image, promoDept, promoFront);
             // Cancel edit mode
             grid.EditIndex = -1;
-            // Display status message
-            statusLabel.Text = success ? "Product update successful" : "Product update failed";
+            
+            statusLabel.Text = success ? "Успешно обновяване на продукт" : "Неуспешно обновяване на продукт";
         }
         catch
         {
             // Display error
-            statusLabel.Text = "Product update failed";
+            statusLabel.Text = "Неуспешно обновяване на продукт";
         }
         // Reload grid
         BindGrid();
@@ -100,7 +99,7 @@ public partial class AdminProducts : System.Web.UI.Page
         bool success = CatalogAccess.CreateProduct(categoryId, newName.Text, newDescription.Text, newPrice.Text, newThumbnail.Text, newImage.Text,
 newPromoDept.Checked.ToString(), newPromoFront.Checked.ToString());
         // Display status message
-        statusLabel.Text = success ? "Insert successful" : "Insert failed";
+        statusLabel.Text = success ? "Успешно създаване" : "Неуспешно създаване";
         // Reload the grid
         BindGrid();
     }

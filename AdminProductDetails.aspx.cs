@@ -103,13 +103,13 @@ public partial class AdminProductDetails : Page
             // Remove the product from the category
             bool success = CatalogAccess.RemoveProductFromCategory(currentProductId, categoryId);
             // Display status message
-            statusLabel.Text = success ? "Product removed successfully" : "Product removal failed";
+            statusLabel.Text = success ? "Успешно премахване" : "Неуспешно премахване";
             // Refresh the page
             PopulateControls();
         }
         else
         {
-            statusLabel.Text = "You need to select a category";
+            statusLabel.Text = "Трябва да изберете категория";
         }
     }
 
@@ -131,13 +131,13 @@ public partial class AdminProductDetails : Page
             // Assign the product to the category
             bool success = CatalogAccess.AssignProductToCategory(currentProductId, categoryId);
             // Display status message
-            statusLabel.Text = success ? "Product assigned successfully" : "Product assignation failed";
+            statusLabel.Text = success ? "Успешно добавяне" : "Неуспешно добавяне";
             // Refresh the page
             PopulateControls();
         }
         else
         {
-            statusLabel.Text = "You need to select a category";
+            statusLabel.Text = "Трябва да изберете категория";
         }
     }
 
@@ -154,7 +154,7 @@ public partial class AdminProductDetails : Page
             // so the new category will reflect in the query string
             if (!success)
             {
-                statusLabel.Text = "Couldn't move the product to the specified category";
+                statusLabel.Text = "Неуспешно преместване на продукт към дадената категория";
 
             }
             else
@@ -167,7 +167,7 @@ public partial class AdminProductDetails : Page
         }
         else
         {
-            statusLabel.Text = "You need to select a category";
+            statusLabel.Text = "Трябва да изберете категория";
         }
 
     }
@@ -188,14 +188,14 @@ public partial class AdminProductDetails : Page
                 CatalogAccess.UpdateProduct(currentProductId, pd.Name,
                pd.Description, pd.Price.ToString(), fileName, pd.Image, pd.PromoDept.ToString(), pd.PromoFront.ToString());
                 // reload the page
-                Response.Redirect("AdminProductDetails.aspx" +
-                "?DepartmentID=" + currentDepartmentId +
+                String url = "AdminProductDetails.aspx?DepartmentID=" + currentDepartmentId +
                 "&CategoryID=" + currentCategoryId +
-                "&ProductID=" + currentProductId);
+                "&ProductID=" + currentProductId;
+                Response.Redirect(url);
             }
             catch
             {
-                statusLabel.Text = "Uploading image 1 failed";
+                statusLabel.Text = "Неуспешно качване на изображение 1";
             }
         }
     }
@@ -224,7 +224,7 @@ pd.PromoDept.ToString(), pd.PromoFront.ToString());
             }
             catch
             {
-                statusLabel.Text = "Uploading image 2 failed";
+                statusLabel.Text = "Неуспешно качване на изображение 2";
             }
         }
     }

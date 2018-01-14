@@ -2,9 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="titlePlaceHolder"
     runat="Server">
-    <span class="AdminTitle">BalloonShop Admin
- <br />
-        Back to
+    <span class="AdminTitle">Обратно към
  <asp:HyperLink ID="catLink" runat="server" />
     </span>
 </asp:Content>
@@ -16,41 +14,40 @@
         <asp:Label ID="statusLabel" CssClass="AdminError" runat="server" />
     </p>
     <p>
-        Product belongs to these categories:
+        Продуктът принадлежи към следните категории:
  <asp:Label ID="categoriesLabel" runat="server" />
     </p>
     <p>
-        Remove product from this category:
+        Премахни продукта от тази категория:
  <asp:DropDownList ID="categoriesListRemove" runat="server" />
-        <asp:Button ID="removeButton" runat="server" Text="Remove"
+        <asp:Button ID="removeButton" runat="server" Text="Премахни"
             OnClick="removeButton_Click" />
-        <asp:Button ID="deleteButton" runat="server" Text="DELETE 
-FROM CATALOG"
+        <asp:Button ID="deleteButton" runat="server" Text="Изтрий от каталога"
             OnClick="deleteButton_Click" />
     </p>
     <p>
-        Assign product to this category:
+        Добави продукта в тази категория:
  <asp:DropDownList ID="categoriesListAssign" runat="server" />
-        <asp:Button ID="assignButton" runat="server" Text="Assign"
+        <asp:Button ID="assignButton" runat="server" Text="Добави"
             OnClick="assignButton_Click" />
         <p>
-            Move product to this category:
+            Прехвърли продукта в тази категория:
  <asp:DropDownList ID="categoriesListMove" runat="server" />
-            <asp:Button ID="moveButton" runat="server" Text="Move"
+            <asp:Button ID="moveButton" runat="server" Text="Прехвърли"
                 OnClick="moveButton_Click" />
         </p>
         <p>
-            Image1 file name:
+            Изображение 1:
  <asp:Label ID="Image1Label" runat="server" />
             <asp:FileUpload ID="image1FileUpload" runat="server" />
-            <asp:Button ID="upload1Button" runat="server" Text="Upload" OnClick="upload1Button_Click" /><br />
-            <asp:Image ID="image1" runat="server" />
+            <asp:Button ID="upload1Button" runat="server" Text="Качи" OnClick="upload1Button_Click" /><br />
+            <asp:Image ID="image1" runat="server" ControlStyle-Width="300px" />
         </p>
         <p>
-            Image2 file name:
+            Изображение 2:
  <asp:Label ID="Image2Label" runat="server" />
             <asp:FileUpload ID="image2FileUpload" runat="server" />
-            <asp:Button ID="upload2Button" runat="server" Text="Upload" OnClick="upload2Button_Click" /><br />
-            <asp:Image ID="image2" runat="server" />
+            <asp:Button ID="upload2Button" runat="server" Text="Качи" OnClick="upload2Button_Click" /><br />
+            <asp:Image ID="image2" runat="server" ControlStyle-Width="300px" />
         </p>
 </asp:Content>

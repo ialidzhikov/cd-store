@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/CdShop.master" Title="BalloonShop: What are you looking for?" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/CdShop.master" Title="CdShop: За какво се оглеждахте?" %>
 
 <script runat="server">
  protected void Page_Load(object sender, EventArgs e)
@@ -10,14 +10,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <h1>Looking for balloons?</h1>
+    <h1>Оглеждахте се за музикални CD-та</h1>
     <p>
-        Unfortunately, the page that you asked for doesn't exist in our web site!
+        За съжаление, страницата, която търсихте не съществува на нашия сайт!
     </p>
     <p>
-        Please visit our
- <asp:HyperLink runat="server" Target="~/" Text="catalog" />,
- or contact us at friendly_support@example.com!
+        Моля посетете нашия
+ <asp:HyperLink runat="server" Target="~/" Text="каталог" />,
+ или се свържете с нас на friendly_support@example.com!
     </p>
-    <p>The <b>BalloonShop</b> team</p>
+    <p>Екипът на <b>CdShop</b></p>
 </asp:Content>

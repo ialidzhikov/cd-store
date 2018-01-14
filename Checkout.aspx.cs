@@ -67,9 +67,7 @@ public partial class Checkout : Page
         }
         else
         {
-            InfoLabel.Text =
-            "Please confirm that the above details are "
-            + "correct before proceeding.";
+            InfoLabel.Text = "Моля, преди да продължите напред, подвърдете, че горепосочените данни са коректни.";
         }
         placeOrderButton.Visible = addressOK && cardOK;
         shippingSelection.Visible = addressOK && cardOK;
@@ -95,8 +93,7 @@ public partial class Checkout : Page
         int shippingId = 0;
         int.TryParse(shippingSelection.SelectedValue, out shippingId);
         // Get tax ID or default to "No tax"
-        string shippingRegion =
-        (HttpContext.Current.Profile as ProfileCommon).ShippingRegion;
+        string shippingRegion = (HttpContext.Current.Profile as ProfileCommon).ShippingRegion;
         int taxId;
         switch (shippingRegion)
         {

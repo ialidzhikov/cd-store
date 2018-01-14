@@ -17,7 +17,7 @@
             try
             {
                 // send mail to customer
-                orderProcessor.MailCustomer("BalloonShop order received.", GetMailBody());
+                orderProcessor.MailCustomer("CdShop order received.", GetMailBody());
                 // audit
                 orderProcessor.CreateAudit(
                 "Notification e-mail sent to customer.", 20002);
@@ -37,18 +37,16 @@
 
         private string GetMailBody()
         {
-            // construct message body
             string mail;
-            mail = "Thank you for your order! The products you have "
-            + "ordered are as follows:\n\n"
+            mail = "Благодарим ви за поръчката! Продуктите, които поръчахте са следните:\n\n"
             + orderProcessor.Order.OrderAsString
-            + "\n\nYour order will be shipped to:\n\n"
+            + "\n\nПоръчката ви ще бъде доставена до:\n\n"
             + orderProcessor.Order.CustomerAddressAsString
-            + "\n\nOrder reference number:\n\n"
+            + "\n\nНомер за справка на поръчката:\n\n"
             + orderProcessor.Order.OrderId.ToString()
-            + "\n\nYou will receive a confirmation e-mail when this "
-            + "order has been dispatched. Thank you for shopping "
-            + "at BalloonShop!";
+            + "\n\nЩе получите мейл с потвърждение, когато поръчката ви е изпратена. "
+            + "Благодарим, че пазарувахте в CdShop!";
+
             return mail;
         }
     }

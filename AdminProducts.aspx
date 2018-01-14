@@ -1,9 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeFile="AdminProducts.aspx.cs" Inherits="AdminProducts" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="titlePlaceHolder" runat="Server">
-    <span class="AdminTitle">BalloonShop Admin
- <br />
-        Products in
+    <span class="AdminTitle">Продукти в категория
  <asp:HyperLink ID="catLink" runat="server" />
     </span>
 </asp:Content>
@@ -12,11 +10,12 @@
     <p>
         <asp:Label ID="statusLabel" runat="server" Text=""></asp:Label>
     </p>
-    <asp:GridView ID="grid" runat="server" DataKeyNames="Id" AutoGenerateColumns="False" Width="100%" OnRowEditing="grid_RowEditing" OnRowUpdating="grid_RowUpdating">
+    <asp:GridView ID="grid" runat="server" DataKeyNames="Id" AutoGenerateColumns="False" Width="100%" OnRowEditing="grid_RowEditing" OnRowCancelingEdit="grid_RowCancelingEdit" OnRowUpdating="grid_RowUpdating">
         <Columns>
-            <asp:ImageField DataImageUrlField="Thumbnail" DataImageUrlFormatString="ProductImages/{0}" HeaderText="Product Image">
+            <asp:ImageField DataImageUrlField="Thumbnail" DataImageUrlFormatString="ProductImages/{0}" HeaderText="Изображение" ControlStyle-Width="100px">
+                <ItemStyle HorizontalAlign="Center" />
             </asp:ImageField>
-            <asp:TemplateField HeaderText="Product Name" SortExpression="Name">
+            <asp:TemplateField HeaderText="Име на продукта" SortExpression="Name" ItemStyle-HorizontalAlign="Center">
                 <EditItemTemplate>
                     <asp:TextBox ID="nameTextBox" runat="server" Width="97%" CssClass="GridEditingRow" Text='<%# Bind("Name") %>' />
                 </EditItemTemplate>
@@ -24,7 +23,7 @@
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("Name") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Product Description" SortExpression="Description">
+            <asp:TemplateField HeaderText="Описание" SortExpression="Description" ItemStyle-HorizontalAlign="Center">
                 <EditItemTemplate>
                     <asp:TextBox ID="descriptionTextBox" runat="server" Text='<%# Bind("Description") %>'></asp:TextBox>
                 </EditItemTemplate>
@@ -32,7 +31,7 @@
                     <asp:Label ID="Label2" runat="server" Text='<%# Bind("Description") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Price" SortExpression="Price">
+            <asp:TemplateField HeaderText="Цена" SortExpression="Price" ItemStyle-HorizontalAlign="Center">
                 <ItemTemplate>
                     <asp:Label ID="Label2" runat="server"
                         Text='<%# String.Format("{0:0.00}", Eval("Price")) %>'>
@@ -44,7 +43,7 @@
                     </asp:TextBox>
                 </EditItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Thumb File" SortExpression="Thumbnail">
+            <asp:TemplateField HeaderText="Малка картина" SortExpression="Thumbnail">
                 <EditItemTemplate>
                     <asp:TextBox ID="thumbTextBox" Width="80px" runat="server" Text='<%# Bind("Thumbnail") %>'></asp:TextBox>
                 </EditItemTemplate>
@@ -52,7 +51,7 @@
                     <asp:Label ID="Label3" runat="server" Text='<%# Bind("Thumbnail") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Image File" SortExpression="Image">
+            <asp:TemplateField HeaderText="Голяма картина" SortExpression="Image">
                 <EditItemTemplate>
                     <asp:TextBox ID="imageTextBox" Width="80px" runat="server" Text='<%# Bind("Image") %>'></asp:TextBox>
                 </EditItemTemplate>
@@ -60,48 +59,48 @@
                     <asp:Label ID="Label4" runat="server" Text='<%# Bind("Image") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:CheckBoxField DataField="PromoDept" HeaderText="Dept. prom." SortExpression="PromoDept" />
-            <asp:BoundField DataField="PromoFront" HeaderText="Cat. prom." SortExpression="PromoFront" />
+            <asp:CheckBoxField DataField="PromoDept" HeaderText="Промоция отдел" SortExpression="PromoDept" ItemStyle-HorizontalAlign="Center" />
+            <asp:CheckBoxField DataField="PromoFront" HeaderText="Промоция каталог" SortExpression="PromoFront" ItemStyle-HorizontalAlign="Center" />
             <asp:TemplateField>
                 <ItemTemplate>
                     <asp:HyperLink ID="HyperLink1"
-                        runat="server" Text="Select"
+                        runat="server" Text="Избери"
                         NavigateUrl='<%# "AdminProductDetails.aspx?DepartmentID=" + Request.QueryString["DepartmentID"] + "&amp;CategoryID=" + Request.QueryString["CategoryID"] + "&amp;ProductID=" + Eval("Id") %>'>
                     </asp:HyperLink>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:CommandField ShowEditButton="True" />
+            <asp:CommandField ShowEditButton="True" EditText="Редактирай" UpdateText="Запази" CancelText="Откажи" />
         </Columns>
     </asp:GridView>
-    <p>Create a new product and assign it to this category:</p>
+    <p>Създай нов продукт към тази категория:</p>
     <p>
-        <span class="WideLabel">Name:</span>
+        <span class="WideLabel">Име:</span>
         <asp:TextBox ID="newName" runat="server" Width="400px" />
     </p>
     <p>
-        <span class="WideLabel">Description:</span>
+        <span class="WideLabel">Описание:</span>
         <asp:TextBox ID="newDescription" runat="server" Width="400px"
             Height="70px" TextMode="MultiLine" />
     </p>
     <p>
-        <span class="WideLabel">Price:</span>
+        <span class="WideLabel">Цена:</span>
         <asp:TextBox ID="newPrice" runat="server" Width="400px">0.00</asp:TextBox>
     </p>
     <p>
-        <span class="WideLabel">Thumbnail file:</span>
+        <span class="WideLabel">Малка картина:</span>
         <asp:TextBox ID="newThumbnail" runat="server" Width="400px">Generic1.png</asp:TextBox>
     </p>
     <p>
-        <span class="WideLabel">Image file:</span>
+        <span class="WideLabel">Голяма картина:</span>
         <asp:TextBox ID="newImage" runat="server" Width="400px">Generic2.png</asp:TextBox>
     </p>
     <p>
-        <span class="widelabel">Dept. promo:</span>
+        <span class="widelabel">Промоция отдел:</span>
         <asp:CheckBox ID="newPromoDept" runat="server" />
     </p>
     <p>
-        <span class="widelabel">Front promo:</span>
+        <span class="widelabel">Промоция каталог:</span>
         <asp:CheckBox ID="newPromoFront" runat="server" />
     </p>
-    <asp:Button ID="createProduct" runat="server" Text="Create Product" />
+    <asp:Button ID="createProduct" runat="server" Text="Създай" OnClick="createProduct_Click" />
 </asp:Content>

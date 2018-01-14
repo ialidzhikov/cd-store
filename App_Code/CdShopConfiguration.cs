@@ -21,7 +21,6 @@ public static class CdShopConfiguration
         siteName = ConfigurationManager.AppSettings["SiteName"];
     }
 
-    // Returns the connection string for the BalloonShop database
     public static string DbConnectionString
     {
         get

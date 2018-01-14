@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/CdShop.master"
     AutoEventWireup="true" CodeFile="Product.aspx.cs" Inherits="Product"
-    Title="BalloonShop: Product Details Page" %>
+    Title="CdShop: Product Details Page" %>
 
 <%@ Register src="UserControls/ProductRecommendations.ascx" tagname="ProductRecommendations" tagprefix="uc1" %>
 
@@ -19,7 +19,7 @@
         <asp:Label ID="descriptionLabel" runat="server" Text="Label"></asp:Label>
     </p>
     <p>
-        <b>Price:</b>
+        <b>Цена:</b>
         <asp:Label CssClass="ProductPrice" ID="priceLabel" runat="server"
             Text="Label"></asp:Label>
     </p>
@@ -28,7 +28,7 @@
     </p>
     <p>
         <asp:LinkButton ID="AddToCartButton" runat="server"
-            OnClick="AddToCartButton_Click">Add to Shopping Cart</asp:LinkButton>
+            OnClick="AddToCartButton_Click">Добави в количката</asp:LinkButton>
     </p>
     <uc1:ProductRecommendations ID="recommendations" runat="server" />
 </asp:Content>

@@ -17,7 +17,7 @@
             try
             {
                 // send mail to customer
-                orderProcessor.MailCustomer("BalloonShop order dispatched.",
+                orderProcessor.MailCustomer("CdShop order dispatched.",
                 GetMailBody());
                 // audit
                 orderProcessor.CreateAudit(
@@ -39,14 +39,14 @@
         {
             // construct message body
             string mail =
-            "Your order has now been dispatched! The following "
-            + "products have been shipped:\n\n"
+            "Поръчката ви е изпратена! Следните "
+            + "продукти бяха доставени:\n\n"
             + orderProcessor.Order.OrderAsString
-            + "\n\nYour order has been shipped to:\n\n"
+            + "\n\nПоръчката ви бе доставена до:\n\n"
             + orderProcessor.Order.CustomerAddressAsString
-            + "\n\nOrder reference number:\n\n"
+            + "\n\nНомер за справка на поръчката:\n\n"
             + orderProcessor.Order.OrderId.ToString()
-            + "\n\nThank you for shopping at BalloonShop!";
+            + "\n\nБлагодарим, че пазарувахте в CdShop!";
 
             return mail;
         }

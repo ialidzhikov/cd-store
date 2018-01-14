@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class AdminOrderDetails : System.Web.UI.Page
+public partial class AdminOrderDetails : Page
 {
     // set up the form
     protected void Page_Load(object sender, EventArgs e)
@@ -29,7 +29,7 @@ public partial class AdminOrderDetails : System.Web.UI.Page
         // obtain order info
         OrderInfo orderInfo = CommerceLibAccess.GetOrder(orderId);
         // populate labels and text boxes with order info
-        orderIdLabel.Text = "Displaying Order #" + orderId;
+        orderIdLabel.Text = "Поръчка #" + orderId;
         totalAmountLabel.Text = String.Format("{0:c} ", orderInfo.TotalCost);
         dateCreatedTextBox.Text = orderInfo.DateCreated.ToString();
         dateShippedTextBox.Text = orderInfo.DateShipped.ToString();
@@ -48,25 +48,25 @@ public partial class AdminOrderDetails : System.Web.UI.Page
             case 8:
             case 9:
                 // if the order was canceled or completed...
-                processOrderButton.Text = "Process Order";
+                processOrderButton.Text = "Обработи поръчката";
                 processOrderButton.Enabled = false;
                 cancelOrderButton.Enabled = false;
                 break;
             case 3:
                 // if the order is awaiting a stock check...
-                processOrderButton.Text = "Confirm Stock for Order";
+                processOrderButton.Text = "Потвърди наличност за поръчката";
                 processOrderButton.Enabled = true;
                 cancelOrderButton.Enabled = true;
                 break;
             case 6:
                 // if the order is awaiting shipment...
-                processOrderButton.Text = "Confirm Order Shipment";
+                processOrderButton.Text = "Потвърди доставката на поръчката";
                 processOrderButton.Enabled = true;
                 cancelOrderButton.Enabled = true;
                 break;
             default:
                 // otherwise...
-                processOrderButton.Text = "Process Order";
+                processOrderButton.Text = "Обработи поръчката";
                 processOrderButton.Enabled = true;
                 cancelOrderButton.Enabled = true;
                 break;

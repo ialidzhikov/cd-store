@@ -50,9 +50,9 @@ public static class Utilities
         {
             string from = CdShopConfiguration.MailFrom;
             string to = CdShopConfiguration.ErrorLogEmail;
-            string subject = "BalloonShop Error Report";
+            string subject = "CdShop Error Report";
             string body = errorMessage;
             SendMail(from, to, subject, body);
         }
     }
-}
+}

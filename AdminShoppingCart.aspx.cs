@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class AdminShoppingCart : System.Web.UI.Page
+public partial class AdminShoppingCart : Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -16,7 +16,7 @@ public partial class AdminShoppingCart : System.Web.UI.Page
     {
         byte days = byte.Parse(daysList.SelectedItem.Value);
         ShoppingCartDao.DeleteOldCarts(days);
-        countLabel.Text = "The old shopping carts were removed from the database";
+        countLabel.Text = "Старите колички са успешно прамахнати от базата данни.";
     }
 
     protected void countButton_Click(object sender, EventArgs e)
@@ -25,15 +25,15 @@ public partial class AdminShoppingCart : System.Web.UI.Page
         int oldItems = ShoppingCartDao.CountOldCarts(days);
         if (oldItems == -1)
         {
-            countLabel.Text = "Could not count the old shopping carts!";
+            countLabel.Text = "Неуспешно преброяване на старите колички!";
         }
         else if (oldItems == 0)
         {
-            countLabel.Text = "There are no old shopping carts.";
+            countLabel.Text = "Няма намерени стари колички.";
         }
         else
         {
-            countLabel.Text = "There are " + oldItems.ToString() + " old shopping carts.";
+            countLabel.Text = "Намерени са " + oldItems.ToString() + " стари колички.";
         }
     }
 }

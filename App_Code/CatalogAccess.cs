@@ -442,7 +442,7 @@ public static class CatalogAccess
         comm.CommandText = "CatalogCreateCategory";
         // create a new parameter
         DbParameter param = comm.CreateParameter();
-        param.ParameterName = "@DepartmentID";
+        param.ParameterName = "@DepartmentId";
         param.Value = departmentId;
         param.DbType = DbType.Int32;
         comm.Parameters.Add(param);
@@ -467,10 +467,12 @@ public static class CatalogAccess
             // execute the stored procedure
             result = GenericDataAccess.ExecuteNonQuery(comm);
         }
-        catch
+        catch (Exception e)
         {
             // any errors are logged in GenericDataAccess, we ignore them here
+            Utilities.LogError(e);
         }
+
         // result will be 1 in case of success
         return (result != -1);
     }
@@ -767,9 +769,9 @@ public static class CatalogAccess
             // execute the stored procedure
             result = GenericDataAccess.ExecuteNonQuery(comm);
         }
-        catch
+        catch (Exception e)
         {
-            // any errors are logged in GenericDataAccess, we ignore them here
+            Utilities.LogError(e);
         }
         // result will be 1 in case of success
         return (result != -1);

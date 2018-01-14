@@ -7,9 +7,9 @@
             </tr>
             <tr>
                 <td class="UserInfoContent">Не сте влезнали в системата.
-                    <asp:LoginStatus ID="LoginStatus1" runat="server" />
+                    <asp:LoginStatus ID="LoginStatus1" LoginText="Влезте" runat="server" />
                     или
-                    <asp:HyperLink runat="server" ID="registerLink" NavigateUrl="~/Register.aspx" Text="Register" ToolTip="Go to the registration page" />
+                    <asp:HyperLink runat="server" ID="registerLink" NavigateUrl="~/Register.aspx" Text="се регистрирайте" ToolTip="Go to the registration page" />
                 </td>
             </tr>
         </AnonymousTemplate>
@@ -18,20 +18,20 @@
                 <ContentTemplate>
                     <tr>
                         <td class="UserInfoHead">
-                            <asp:LoginName ID="LoginName2" runat="server" FormatString="Hello, <b>{0}</b>!" />
+                            <asp:LoginName ID="LoginName2" runat="server" FormatString="Добре дошъл, <b>{0}</b>!" />
                         </td>
                     </tr>
                     <tr>
                         <td class="UserInfoContent">
-                            <asp:LoginStatus ID="LoginStatus2" runat="server" />
+                            <a href="/">Магазин</a>
                             <br />
-                            <a href="/">CdShop</a>
+                            <a href="AdminDepartments.aspx">Каталог</a>
                             <br />
-                            <a href="AdminDepartments.aspx">Catalog Admin</a>
+                            <a href="AdminShoppingCart.aspx">Колички</a>
                             <br />
-                            <a href="AdminShoppingCart.aspx">Cart Admin</a>
+                            <a href="AdminOrders.aspx">Поръчки</a>
                             <br />
-                            <a href="AdminOrders.aspx">Orders Admin</a>
+                            <asp:LoginStatus ID="LoginStatus2" LogoutText="Изход" runat="server" />
                         </td>
                     </tr>
                 </ContentTemplate>
@@ -41,17 +41,17 @@
                     <tr>
                         <td class="UserInfoHead">
                             <asp:LoginName ID="LoginName2" runat="server"
-                                FormatString="Hello, <b>{0}</b>!" />
+                                FormatString="Добре дошъл, <b>{0}</b>!" />
                         </td>
                     </tr>
                     <tr>
                         <td class="UserInfoContent">
-                            <asp:LoginStatus ID="LoginStatus1" runat="server" />
-                            <br />
                             <asp:HyperLink runat="server" ID="detailsLink"
                                 NavigateUrl="~/CustomerDetails.aspx"
-                                Text="Edit Details"
+                                Text="Профил"
                                 ToolTip="Edit your personal details" />
+                            <br />
+                            <asp:LoginStatus ID="LoginStatus1" LogoutText="Изход" runat="server" />
                         </td>
                 </ContentTemplate>
             </asp:RoleGroup>

@@ -3,7 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="titlePlaceHolder"
     runat="Server">
-    <span class="AdminTitle">BalloonShop Customer Order Access Test</span>
+    <span class="AdminTitle">CdShop Customer Order Access Test</span>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="adminPlaceHolder"
     runat="Server">

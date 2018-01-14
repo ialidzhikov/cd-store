@@ -330,10 +330,7 @@ public class ShoppingCartDao
         // create a new parameter
         param = comm.CreateParameter();
         param.ParameterName = "@CustomerId";
-        param.Value =
- Membership.GetUser(
- HttpContext.Current.User.Identity.Name)
- .ProviderUserKey;
+        param.Value = Membership.GetUser(HttpContext.Current.User.Identity.Name).ProviderUserKey;
         param.DbType = DbType.Guid;
         param.Size = 16;
         comm.Parameters.Add(param);

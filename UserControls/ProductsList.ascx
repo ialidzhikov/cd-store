@@ -2,6 +2,10 @@
 <%@ Register Src="Pager.ascx" TagName="Pager" TagPrefix="uc1" %>
 
 <uc1:Pager ID="topPager" runat="server" Visible="False" />
+<!--<h2>
+    <asp:Label CssClass="CatalogDescription" Text="Тази седмица предлагаме на специални цени следните фантастични музикални CD-та:" runat="server">
+    </asp:Label>
+</h2>-->
 <asp:DataList ID="list" runat="server" RepeatColumns="2" CssClass="ProductList" EnableViewState="False" OnItemDataBound="list_ItemDataBound">
     <ItemTemplate>
         <h3 class="ProductTitle">
@@ -15,7 +19,7 @@
                 alt='<%# HttpUtility.HtmlEncode(Eval("Name").ToString())%>' />
         </a>
         <%# HttpUtility.HtmlEncode(Eval("Description").ToString()) %>
-        <p  class="DetailSection">
+        <p class="DetailSection">
             Цена:
             <%# Eval("Price", "{0:c}") %>
         </p>

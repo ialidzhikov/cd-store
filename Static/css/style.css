@@ -1,0 +1,10 @@
+.page-header {
+    margin-top: 72px;
+    margin-bottom: 21px;
+}
+
+.navbar-brand img {
+    display: inline-block;
+    margin: 0 5px;
+    width: 52px;
+}

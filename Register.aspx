@@ -5,14 +5,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:LoginView ID="LoginView1" runat="server">
         <LoggedInTemplate>
-            You are already registered.
+            Вие вече сте регистриран.
         </LoggedInTemplate>
     </asp:LoginView>
     <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" BackColor="#F7F6F3"
         BorderColor="#E6E2D8" BorderStyle="Solid" BorderWidth="1px"
         CancelDestinationPageUrl="~/" ContinueDestinationPageUrl="CustomerDetails.aspx"
         CreateUserButtonText="Sign Up" Font-Names="Verdana" Font-Size="0.8em"
-        OnCreatedUser="CreateUserWizard1_CreatedUser">
+        OnCreatedUser="CreateUserWizard1_CreatedUser" UserNameLabelText="Потребителско име"
+        PasswordLabelText="Парола" ConfirmPasswordLabelText="Потвърдете парола"
+        EmailLabelText="Мейл адрес" QuestionLabelText="Таен въпрос" AnswerLabelText="Таен отговор">
         <SideBarStyle BackColor="#5D7B9D" BorderWidth="0px" Font-Size="0.9em"
             VerticalAlign="Top" />
         <SideBarButtonStyle BorderWidth="0px" Font-Names="Verdana" ForeColor="White" />

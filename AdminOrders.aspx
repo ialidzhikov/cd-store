@@ -2,9 +2,8 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="titlePlaceHolder" runat="Server">
-    <span class="AdminTitle">CdShop Admin
- <br />
-        Orders
+    <span class="AdminTitle">
+        Поръчки
     </span>
 </asp:Content>
 
@@ -17,38 +16,38 @@
  aspnet_UsersInRoles.UserId INNER JOIN aspnet_Roles ON
  aspnet_UsersInRoles.RoleId = aspnet_Roles.RoleId WHERE
  (aspnet_Roles.RoleName = 'Customers')" />
-    Show orders by customer
+    Покажи поръчки по клиент
  <asp:DropDownList ID="userDropDown" runat="server"
      DataSourceID="CustomerNameDS" DataTextField="UserName"
      DataValueField="UserId" />
     <asp:Button ID="byCustomerGo" runat="server"
-        Text="Go" OnClick="byCustomerGo_Click" />
+        Text="Търси" OnClick="byCustomerGo_Click" />
     <br />
-    Get order by ID
+    Покажи поръчка по идентификатор
  <asp:TextBox ID="orderIDBox" runat="server" Width="77px" />
-    <asp:Button ID="byIDGo" runat="server" Text="Go" OnClick="byIDGo_Click" />
+    <asp:Button ID="byIDGo" runat="server" Text="Търси" OnClick="byIDGo_Click" />
     <br />
-    Show the most recent
+    Покажи най-скорошните
  <asp:TextBox ID="recentCountTextBox" runat="server" MaxLength="4"
      Width="40px">20</asp:TextBox>
-    orders
+    поръчки
  <asp:Button ID="byRecentGo" runat="server"
-     Text="Go" OnClick="byRecentGo_Click" />
+     Text="Търси" OnClick="byRecentGo_Click" />
     <br />
-    Show all orders created between
+    Покажи всички поръчки, създадени между
  <asp:TextBox ID="startDateTextBox" runat="server" Width="72px" />
-    and
+    и
  <asp:TextBox ID="endDateTextBox" runat="server" Width="72px" />
     <asp:Button ID="byDateGo" runat="server"
-        Text="Go" OnClick="byDateGo_Click" />
+        Text="Търси" OnClick="byDateGo_Click" />
     <br />
-    Show all orders awaiting stock check
+    Покажи всички поръчки, чакащи проверка на наличност
  <asp:Button ID="awaitingStockGo" runat="server"
-     Text="Go" OnClick="awaitingStockGo_Click" />
+     Text="Търси" OnClick="awaitingStockGo_Click" />
     <br />
-    Show all orders awaiting shipment
+    Покажи всички поръчки, чакащи доставка
  <asp:Button ID="awaitingShippingGo" runat="server"
-     Text="Go" OnClick="awaitingShippingGo_Click" />
+     Text="Търси" OnClick="awaitingShippingGo_Click" />
     <br />
     <asp:Label ID="errorLabel" runat="server" CssClass="AdminError" EnableViewState="False"></asp:Label>
     <asp:RangeValidator ID="startDateValidator" runat="server" ControlToValidate="startDateTextBox" Display="None" ErrorMessage="RangeValidator" MaximumValue="1/1/2015" MinimumValue="1/1/1999" Type="Date"></asp:RangeValidator>
@@ -57,20 +56,20 @@
     <asp:ValidationSummary ID="validateSummary" runat="server" CssClass="AdminError" HeaderText="Data validation errors:" />
     <asp:GridView ID="grid" runat="server" AutoGenerateColumns="False" DataKeyNames="OrderId" OnSelectedIndexChanged="grid_SelectedIndexChanged">
         <Columns>
-            <asp:BoundField DataField="OrderId" HeaderText="Order ID"
-                ReadOnly="True" SortExpression="OrderID" />
+            <asp:BoundField DataField="OrderId" HeaderText="Идентификатор"
+                ReadOnly="True" SortExpression="OrderID" ItemStyle-HorizontalAlign="Center" />
             <asp:BoundField DataField="DateCreated"
-                HeaderText="Date Created" ReadOnly="True"
-                SortExpression="DateCreated" />
+                HeaderText="Дата на създаване" ReadOnly="True"
+                SortExpression="DateCreated" ItemStyle-HorizontalAlign="Center" />
             <asp:BoundField DataField="DateShipped"
-                HeaderText="Date Shipped" ReadOnly="True"
-                SortExpression="DateShipped" />
-            <asp:BoundField DataField="StatusAsString" HeaderText="Status"
-                ReadOnly="True" SortExpression="StatusAsString" />
+                HeaderText="Дата на доставяне" ReadOnly="True"
+                SortExpression="DateShipped" ItemStyle-HorizontalAlign="Center" />
+            <asp:BoundField DataField="StatusAsString" HeaderText="Статус"
+                ReadOnly="True" SortExpression="StatusAsString" ItemStyle-HorizontalAlign="Center" />
             <asp:BoundField DataField="CustomerName"
-                HeaderText="Customer Name" ReadOnly="True"
-                SortExpression="CustomerName" />
-            <asp:ButtonField CommandName="Select" Text="Select" />
+                HeaderText="Име на клиент" ReadOnly="True"
+                SortExpression="CustomerName" ItemStyle-HorizontalAlign="Center" />
+            <asp:ButtonField CommandName="Select" Text="Избери" ItemStyle-HorizontalAlign="Center" />
         </Columns>
     </asp:GridView>
     <br />

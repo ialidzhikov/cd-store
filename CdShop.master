@@ -31,7 +31,6 @@
               <uc2:CategoriesList ID="CategoriesList1" runat="server" />
               <p>
                   <uc6:CartSummary ID="CartSummary1" runat="server" />
-                <asp:HyperLink ID="PayPalViewCart" runat="server" NavigateUrl=<%# Link.ToPayPalViewCart() %>>Your Shopping Cart</asp:HyperLink>
               </p>
           </div>
         </div>

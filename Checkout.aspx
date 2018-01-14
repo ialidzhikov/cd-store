@@ -8,23 +8,23 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1"
     runat="Server">
     <asp:Label ID="titleLabel" runat="server"
-        CssClass="CatalogTitle" Text="Confirm Your Order" />
+        CssClass="CatalogTitle" Text="Потвърдете вашата поръчка" />
     <br />
     <br />
     <asp:GridView ID="grid" runat="server" Width="100%"
         AutoGenerateColumns="False" DataKeyNames="Id"
         BorderWidth="1px">
         <Columns>
-            <asp:BoundField DataField="Name" HeaderText="Product Name"
-                ReadOnly="True" SortExpression="Name" />
+            <asp:BoundField DataField="Name" HeaderText="Име на продукта"
+                ReadOnly="True" SortExpression="Name" ItemStyle-HorizontalAlign="Center" />
             <asp:BoundField DataField="Price" DataFormatString="{0:c}"
-                HeaderText="Price" ReadOnly="True"
-                SortExpression="Price" />
-            <asp:BoundField DataField="Quantity" HeaderText="Quantity"
-                ReadOnly="True" SortExpression="Quantity" />
+                HeaderText="Цена" ReadOnly="True"
+                SortExpression="Price" ItemStyle-HorizontalAlign="Center" />
+            <asp:BoundField DataField="Quantity" HeaderText="Количество"
+                ReadOnly="True" SortExpression="Quantity" ItemStyle-HorizontalAlign="Center" />
             <asp:BoundField DataField="Subtotal" ReadOnly="True"
-                DataFormatString="{0:c}" HeaderText="Subtotal"
-                SortExpression="Subtotal" />
+                DataFormatString="{0:c}" HeaderText="Общо"
+                SortExpression="Subtotal" ItemStyle-HorizontalAlign="Center" />
         </Columns>
     </asp:GridView>
     <asp:Label ID="Label2" runat="server" Text="Total amount: "
@@ -38,9 +38,9 @@
     <br />
     <asp:Label ID="InfoLabel" runat="server" />
     <br />
-    Shipping type:
+    Вид доставка:
     <asp:DropDownList ID="shippingSelection" runat="server" />
     <br />
     <asp:Button ID="placeOrderButton" runat="server"
-        Text="Place order" OnClick="placeOrderButton_Click" />
+        Text="Поръчай" OnClick="placeOrderButton_Click" />
 </asp:Content>

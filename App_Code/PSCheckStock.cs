@@ -16,7 +16,7 @@
             try
             {
                 // send mail to supplier
-                orderProcessor.MailSupplier("BalloonShop stock check.",
+                orderProcessor.MailSupplier("CdShop stock check.",
                 GetMailBody());
                 // audit
                 orderProcessor.CreateAudit(

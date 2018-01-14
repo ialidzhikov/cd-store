@@ -6,7 +6,7 @@
             <b>
                 <asp:Label ID="cartSummaryLabel" runat="server" /></b>
             <asp:HyperLink ID="viewCartLink" runat="server" NavigateUrl="../ShoppingCart.aspx"
-                CssClass="CartLink" Text="(view details)" />
+                CssClass="CartLink" Text="(детайли)" />
             <asp:DataList ID="list" runat="server">
                 <ItemTemplate>
                     <%# Eval("Quantity") %>

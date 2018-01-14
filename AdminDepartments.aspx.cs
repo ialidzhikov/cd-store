@@ -33,7 +33,7 @@ public partial class AdminDepartments : Page
         // Set the row for which to enable edit mode
         grid.EditIndex = e.NewEditIndex;
         // Set status message
-        statusLabel.Text = "Editing row # " + e.NewEditIndex.ToString();
+        statusLabel.Text = "Редактиране на ред # " + e.NewEditIndex.ToString();
         // Reload the grid
         BindGrid();
     }
@@ -43,7 +43,7 @@ public partial class AdminDepartments : Page
         // Cancel edit mode
         grid.EditIndex = -1;
         // Set status message
-        statusLabel.Text = "Editing canceled";
+        statusLabel.Text = "Отказано редактиране";
         // Reload the grid
         BindGrid();
     }
@@ -59,7 +59,7 @@ public partial class AdminDepartments : Page
         // Cancel edit mode
         grid.EditIndex = -1;
         // Display status message
-        statusLabel.Text = success ? "Update successful" : "Update failed";
+        statusLabel.Text = success ? "Успешно обновяване" : "Неуспешно обновяване";
         // Reload the grid
         BindGrid();
     }
@@ -73,7 +73,7 @@ public partial class AdminDepartments : Page
         // Cancel edit mode
         grid.EditIndex = -1;
         // Display status message
-        statusLabel.Text = success ? "Delete successful" : "Delete failed";
+        statusLabel.Text = success ? "Успешно изтриване" : "Неуспешно изтриване";
         // Reload the grid
         BindGrid();
     }
@@ -83,7 +83,7 @@ public partial class AdminDepartments : Page
         // Execute the insert command
         bool success = CatalogAccess.AddDepartment(newName.Text, newDescription.Text);
         // Display status message
-        statusLabel.Text = success ? "Insert successful" : "Insert failed";
+        statusLabel.Text = success ? "Успешно създаване" : "Неуспешно създаване";
         // Reload the grid
         BindGrid();
     }

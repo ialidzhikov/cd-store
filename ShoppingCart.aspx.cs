@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class ShoppingCart : System.Web.UI.Page
+public partial class ShoppingCart : Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -28,7 +28,7 @@ public partial class ShoppingCart : System.Web.UI.Page
         // if the shopping cart is empty...
         if (dt.Rows.Count == 0)
         {
-            titleLabel.Text = "Your shopping cart is empty!";
+            titleLabel.Text = "Вашата количка е празна!";
             grid.Visible = false;
             updateButton.Enabled = false;
             checkoutButton.Enabled = false;
@@ -41,7 +41,7 @@ public partial class ShoppingCart : System.Web.UI.Page
             grid.DataSource = dt;
             grid.DataBind();
             // setup controls
-            titleLabel.Text = "These are the products in your shopping cart:";
+            titleLabel.Text = "Това са продуктите във вашата кошница:";
             grid.Visible = true;
             updateButton.Enabled = true;
             checkoutButton.Enabled = true;
@@ -49,7 +49,8 @@ public partial class ShoppingCart : System.Web.UI.Page
             decimal amount = ShoppingCartDao.GetTotalAmount();
             totalAmountLabel.Text = String.Format("{0:c}", amount);
         }
-    }
+    }
+
 
     protected void grid_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
@@ -60,8 +61,7 @@ public partial class ShoppingCart : System.Web.UI.Page
         // Remove the product from the shopping cart
         bool success = ShoppingCartDao.RemoveItem(productId);
         // Display status
-        statusLabel.Text = success ? "Product successfully removed!" :
-        "There was an error removing the product! ";
+        statusLabel.Text = success ? "Продуктът е успешно премахнат!" : "Имаше проблем с премахването на продукта! ";
         // Repopulate the control
         PopulateControls();
     }
@@ -91,20 +91,17 @@ public partial class ShoppingCart : System.Web.UI.Page
             // Get the quantity, guarding against bogus values
             if (Int32.TryParse(quantityTextBox.Text, out quantity))
             {
-                // Update product quantity
                 success = success && ShoppingCartDao.UpdateItem(productId, quantity);
             }
             else
             {
-                // if TryParse didn't succeed
                 success = false;
             }
             // Display status message
-            statusLabel.Text = success ?
-            "Your shopping cart was successfully updated!" :
-            "Some quantity updates failed! Please verify your cart!";
+            statusLabel.Text = success ? "Вашата кошница бе успешно обновена!" :
+                "Обновяването на някои количества беше неуспешно! Моля проверете вашата кошница!";
         }
-        // Repopulate the control
+
         PopulateControls();
     }
 

@@ -10,7 +10,7 @@ public partial class OrderPlaced : Page
     protected override void OnInit(EventArgs e)
     {
         // Uncomment to enforce SSL (as explained in Chapter 16)
-        // (Master as BalloonShop).EnforceSSL = true;
+        // (Master as CdShop).EnforceSSL = true;
         base.OnInit(e);
     }
     protected void Page_Load(object sender, EventArgs e)

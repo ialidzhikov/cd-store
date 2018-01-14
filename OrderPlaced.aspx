@@ -5,5 +5,5 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1"
     runat="Server">
-    Thank you for your order, please come again!
+    Благодарим ви за поръчката, заповядайте отново!
 </asp:Content>

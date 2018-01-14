@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class AdminCategories : System.Web.UI.Page
+public partial class AdminCategories : Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -51,13 +51,12 @@ public partial class AdminCategories : System.Web.UI.Page
     }
 
     // Cancel edit mode
-    protected void grid_RowCancelingEdit(object sender,
-    GridViewCancelEditEventArgs e)
+    protected void grid_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
     {
         // Cancel edit mode
         grid.EditIndex = -1;
         // Set status message
-        statusLabel.Text = "Editing canceled";
+        statusLabel.Text = "Отказано редактиране";
         // Reload the grid
         BindGrid();
     }
@@ -74,21 +73,29 @@ public partial class AdminCategories : System.Web.UI.Page
         // Cancel edit mode
         grid.EditIndex = -1;
         // Display status message
-        statusLabel.Text = success ? "Update successful" : "Update failed";
+        statusLabel.Text = success ? "Успешно обновяване" : "Неуспешно обновяване";
         // Reload the grid
+        BindGrid();
+    }
+
+    protected void grid_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        string id = grid.DataKeys[e.RowIndex].Value.ToString();
+        bool success = CatalogAccess.DeleteCategory(id);
+        
+        grid.EditIndex = -1;
+        statusLabel.Text = success ? "Успешно изтриване" : "Неуспешно изтриване";
+        
         BindGrid();
     }
 
     // Create a new category
     protected void createCategory_Click(object sender, EventArgs e)
     {
-        // Get DepartmentID from the query string
         string departmentId = Request.QueryString["DepartmentID"];
-        // Execute the insert command
         bool success = CatalogAccess.CreateCategory(departmentId, newName.Text, newDescription.Text);
-        // Display results
-        statusLabel.Text = success ? "Insert successful" : "Insert failed";
-        // Reload the grid
+        statusLabel.Text = success ? "Успешно създаване" : "Неуспешно създаване";
+
         BindGrid();
     }
 }

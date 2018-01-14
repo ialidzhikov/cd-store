@@ -13,16 +13,16 @@ public class CommerceLibAccess
 {
     public static readonly string[] OrderStatuses =
     {
-        "Order placed, notifying customer", // 0
-        "Awaiting confirmation of funds", // 1
-        "Notifying supplier—stock check", // 2
-        "Awaiting stock confirmation", // 3
-        "Awaiting credit card payment", // 4
-        "Notifying supplier—shipping", // 5
-        "Awaiting shipment confirmation", // 6
-        "Sending final notification", // 7
-        "Order completed", // 8
-        "Order canceled" // 9
+        "Поръчката е направена, съобщаване на клиента", // 0
+        "Изчакване на потвърждение на парите", // 1
+        "Съобщаване за проверка на наличността от доставчика", // 2
+        "Изчакване на потвърждение за наличност", // 3
+        "Изчакване на плащане с кредитна карта", // 4
+        "Съобщаване за доставяне от доставчика", // 5
+        "Изчакване на потвърждение за доставка", // 6
+        "Изпращане на финално съобщение", // 7
+        "Завършена поръчка", // 8
+        "Отказана поръчка" // 9
     };
 
     public static List<OrderDetail> GetOrderDetails(string orderId)
@@ -31,10 +31,10 @@ public class CommerceLibAccess
         DataTable orderDetailsData = OrderDao.GetDetails(orderId);
         // create List<>
         List<OrderDetail> orderDetails = new List<OrderDetail>(orderDetailsData.Rows.Count);
-        foreach (DataRow orderDetail in orderDetailsData.Rows)
+        foreach (DataRow row in orderDetailsData.Rows)
         {
-            orderDetails.Add(
-            new OrderDetail(orderDetail));
+            OrderDetail orderDetail = new OrderDetail(row);
+            orderDetails.Add(orderDetail);
         }
 
         return orderDetails;

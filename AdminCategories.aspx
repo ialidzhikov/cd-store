@@ -1,9 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeFile="AdminCategories.aspx.cs" Inherits="AdminCategories" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="titlePlaceHolder" runat="Server">
-    <span class="AdminTitle">BalloonShop Admin
- <br />
-        Categories in
+    <span class="AdminTitle">Категории в 
  <asp:HyperLink ID="deptLink" runat="server" />
     </span>
 </asp:Content>
@@ -12,10 +10,10 @@
     <p>
         <asp:Label ID="statusLabel" runat="server" Text=""></asp:Label>
     </p>
-    <asp:GridView ID="grid" runat="server" DataKeyNames="Id" AutoGenerateColumns="False" Width="100%" OnRowEditing="grid_RowEditing" OnRowUpdating="grid_RowUpdating">
+    <asp:GridView ID="grid" runat="server" DataKeyNames="Id" AutoGenerateColumns="False" Width="100%" OnRowEditing="grid_RowEditing" OnRowUpdating="grid_RowUpdating" OnRowDeleting="grid_RowDeleting">
         <Columns>
-            <asp:BoundField DataField="Name" HeaderText="CategoryName" SortExpression="Name" />
-            <asp:TemplateField HeaderText="Category Description" SortExpression="Description">
+            <asp:BoundField DataField="Name" HeaderText="Име на категория" SortExpression="Name" ItemStyle-HorizontalAlign="Center" />
+            <asp:TemplateField HeaderText="Category Description" SortExpression="Description" ItemStyle-HorizontalAlign="Center">
                 <ItemTemplate>
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("Description") %>'>
                     </asp:Label>
@@ -25,22 +23,22 @@
                         Text='<%# Bind("Description") %>' Height="70px" Width="400px" />
                 </EditItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField>
+            <asp:TemplateField HeaderText="Продукти" ItemStyle-HorizontalAlign="Center">
                 <ItemTemplate>
-                    <asp:HyperLink runat="server" Text="View Products" ID="link" NavigateUrl='<%# "AdminProducts.aspx?DepartmentID=" + 
+                    <asp:HyperLink runat="server" Text="Виж продуктите" ID="link" NavigateUrl='<%# "AdminProducts.aspx?DepartmentID=" + 
                             Request.QueryString["DepartmentID"] + "&amp;CategoryID=" + Eval("Id") %>' />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:CommandField ShowEditButton="True" />
-            <asp:CommandField HeaderText="Delete" ShowDeleteButton="True" ShowHeader="True" />
+            <asp:CommandField ShowEditButton="True" EditText="Редактирай" ItemStyle-HorizontalAlign="Center" />
+            <asp:CommandField ShowDeleteButton="True" DeleteText="Изтрий" ItemStyle-HorizontalAlign="Center" />
         </Columns>
     </asp:GridView>
-    <p>Create a new category:</p>
-    <p>Name:</p>
+    <p>Създай нова категория:</p>
+    <p>Име:</p>
     <asp:TextBox ID="newName" runat="server" Width="400px" />
-    <p>Description:</p>
+    <p>Описание:</p>
     <asp:TextBox ID="newDescription" runat="server" Width="400px" Height="70px" TextMode="MultiLine" />
     <p>
-        <asp:Button ID="createCategory" Text="Create Category" runat="server" />
+        <asp:Button ID="createCategory" Text="Създай" runat="server" OnClick="createCategory_Click" />
     </p>
 </asp:Content>
