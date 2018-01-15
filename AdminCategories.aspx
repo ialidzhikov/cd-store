@@ -10,7 +10,7 @@
     <p>
         <asp:Label ID="statusLabel" runat="server" Text=""></asp:Label>
     </p>
-    <asp:GridView ID="grid" runat="server" DataKeyNames="Id" AutoGenerateColumns="False" Width="100%" OnRowEditing="grid_RowEditing" OnRowUpdating="grid_RowUpdating" OnRowDeleting="grid_RowDeleting">
+    <asp:GridView ID="grid" runat="server" DataKeyNames="Id" AutoGenerateColumns="False" Width="100%" OnRowEditing="grid_RowEditing" OnRowCancelingEdit="grid_RowCancelingEdit" OnRowUpdating="grid_RowUpdating" OnRowDeleting="grid_RowDeleting">
         <Columns>
             <asp:BoundField DataField="Name" HeaderText="Име на категория" SortExpression="Name" ItemStyle-HorizontalAlign="Center" />
             <asp:TemplateField HeaderText="Category Description" SortExpression="Description" ItemStyle-HorizontalAlign="Center">
@@ -29,7 +29,7 @@
                             Request.QueryString["DepartmentID"] + "&amp;CategoryID=" + Eval("Id") %>' />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:CommandField ShowEditButton="True" EditText="Редактирай" ItemStyle-HorizontalAlign="Center" />
+            <asp:CommandField ShowEditButton="True" EditText="Редактирай" UpdateText="Запази" CancelText="Откажи" ItemStyle-HorizontalAlign="Center" />
             <asp:CommandField ShowDeleteButton="True" DeleteText="Изтрий" ItemStyle-HorizontalAlign="Center" />
         </Columns>
     </asp:GridView>
