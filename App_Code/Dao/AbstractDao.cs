@@ -15,10 +15,16 @@
 
         public List<T> GetAll()
         {
+            String query = String.Format("SELECT * FROM {0};", GetTableName());
+            return ExecuteSelectQuery(query);
+        }
+
+        protected List<T> ExecuteSelectQuery(String query)
+        {
             using (DbConnection connection = CreateConnection())
             using (DbCommand command = connection.CreateCommand())
             {
-                command.CommandText = String.Format("SELECT * FROM {0};", GetTableName());
+                command.CommandText = query;
                 connection.Open();
                 using (DbDataReader reader = command.ExecuteReader())
                 {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECommerce.CdShop.Dao;
+using System;
 using System.Data;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -66,6 +67,11 @@ public partial class Product : Page
             // add a new attribute value to the DropDownList
             attributeValuesDropDown.Items.Add(new ListItem(attributeValue, attributeValueId));
         }
+
+        SongDao songDao = new SongDao();
+        int productIdAsInt = int.Parse(productId);
+        grid.DataSource = songDao.GetAllByProductId(productIdAsInt);
+        grid.DataBind();
     }
 
     protected void AddToCartButton_Click(object sender, EventArgs e)

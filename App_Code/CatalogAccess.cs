@@ -900,4 +900,60 @@ public static class CatalogAccess
         return GenericDataAccess.ExecuteSelectCommand(comm);
     }
 
+    // Gets the reviews for a specific product
+    public static DataTable GetProductReviews(string productId)
+    {
+        // get a configured DbCommand object
+        DbCommand comm = GenericDataAccess.CreateCommand();
+        // set the stored procedure name
+        comm.CommandText = "CatalogGetProductReviews";
+        // create a new parameter
+        DbParameter param = comm.CreateParameter();
+        param.ParameterName = "@ProductId";
+        param.Value = productId;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+        // execute the stored procedure
+        return GenericDataAccess.ExecuteSelectCommand(comm);
+    }
+
+    // Add a new shopping cart item
+    public static bool AddReview(string customerId, string productId, string review)
+    {
+        // get a configured DbCommand object
+        DbCommand comm = GenericDataAccess.CreateCommand();
+        // set the stored procedure name
+        comm.CommandText = "CatalogAddProductReview ";
+        // create a new parameter
+        DbParameter param = comm.CreateParameter();
+        param.ParameterName = "@CustomerId";
+        param.Value = customerId;
+        param.DbType = DbType.String;
+        comm.Parameters.Add(param);
+        // create a new parameter
+        param = comm.CreateParameter();
+        param.ParameterName = "@ProductId";
+        param.Value = productId;
+        param.DbType = DbType.Int32;
+        comm.Parameters.Add(param);
+        // create a new parameter
+        param = comm.CreateParameter();
+        param.ParameterName = "@Review";
+        param.Value = review;
+        param.DbType = DbType.String;
+        comm.Parameters.Add(param);
+        // returns true in case of success or false in case of an error
+        try
+        {
+        // execute the stored procedure and return true if it executes
+        // successfully, or false otherwise
+            return (GenericDataAccess.ExecuteNonQuery(comm) != -1);
+        }
+        catch
+        {
+            // prevent the exception from propagating, but return false to
+            // signal the error
+            return false;
+        }
+    }
 }

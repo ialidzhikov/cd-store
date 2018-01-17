@@ -243,3 +243,15 @@ a.CategorySelected {
     border: Solid 1px Navy;
     line-height: 20px;
 }
+
+.ReviewHead {
+    font-weight: bold;
+}
+
+.ReviewTable {
+    background: #ccddff;
+    border-bottom: #fff solid 3px;
+    display: block;
+    padding: 5px;
+    width: 100%;
+}
