@@ -1,0 +1,8 @@
+# Run admin tools
+
+cd /c/Windows/Microsoft.NET/Framework/v2.0.50727
+aspnet_regsql –U cdshop -P ecommerce -S localhost\SQLEXPRESS01 -A all -d CdShop
+
+iisexpress.exe /path:"C:\Windows\Microsoft.NET\Framework\v4.0.30319\ASP.NETWebAdminFiles" /vpath:"/admin" /port:65311 /clr:4.0 /ntlm
+
+http://localhost:65311/admin/default.aspx?applicationPhysicalPath=C:\Users\i331370\education\fmi\semester-7\systems-for-e-business\cd-store&applicationUrl=/
